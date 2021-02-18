@@ -1,12 +1,26 @@
 import styled, {css} from "styled-components";
 import bgImage from "../../img/happy.png";
 
-export const HomePage = styled.div`
-background-color: #8C52E5;
-background-image: url(${bgImage});
-background-repeat: no-repeat;
-background-position: bottom;
-height: 100vh;
+
+export const Container = styled.div`
+    background-color: #8C52E5;
+    height: 100%;
+    min-height: 100vh;
+`
+
+export const Header = styled.div`
+    img{
+        margin: 40px;
+    }
+`
+
+export const SectionOne = styled.div`
+    background-image: url(${bgImage});
+    background-repeat: no-repeat;
+    background-position: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     img{
         margin: 40px;
     }
@@ -48,16 +62,23 @@ height: 100vh;
                 margin: 20px;
             }
             form{
+                padding: 12px;
                 input{
-                    display:block;
+                    display: initial;
                     border: none;
                     font-size: 16px;
                     padding: 8px;
                     font-weight: 300;
                     text-align:left;
-                    width: 90%;
+                    width: 85%;
                     margin: 25px;
                     border-bottom: 2px solid #666;
+                    transition: 0.5s;
+
+                    &:focus{
+                        border-bottom: 3px solid #8C52E5;
+
+                    }
                 }
             }
             

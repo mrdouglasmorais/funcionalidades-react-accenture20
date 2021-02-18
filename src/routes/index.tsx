@@ -1,28 +1,14 @@
-import React, { ComponentType } from 'react'
+import React from 'react'
 
-import { Switch, Route, Redirect, RouteProps } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+
+import PrivateRoute from './privateRoute'
 
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Error from "../pages/error";
 import RecoveryPass from "../pages/recoveryPass";
 import DashBoard from "../pages/dashBoard";
-
-import { isAuth } from '../services/isAuth'
-
-interface PrivateRouteProps extends RouteProps {
-    component: ComponentType,
-}
-
-const PrivateRoute: React.FC<PrivateRouteProps> = ( { component: Component, ...rest } ) => (
-    <Route 
-        {...rest}
-        render={ props => isAuth ? (<Component />) : (
-            <Redirect to={{ pathname: '/', state:{ from: props.location } }} />
-            )
-        }
-    />
-)
 
 
 const Routes: React.FC = () => {
