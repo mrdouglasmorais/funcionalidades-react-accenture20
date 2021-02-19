@@ -5,5 +5,4 @@ export const isAuthenticated = (): boolean => {
     } else {
         return false
     }
-
 };

@@ -27,7 +27,7 @@ const Login: React.FC = () => {
     !!storage ? history.push('/dashboard') : localStorage.clear()
   }, [storage])
 
-  function loginSys( event: FormEvent<HTMLFormElement>){
+  function handleLogin( event: FormEvent<HTMLFormElement>){
     event.preventDefault();
 
     const postData= {
@@ -57,7 +57,7 @@ const Login: React.FC = () => {
               Faça seu Login
             </h4>
           </div>
-            <form onSubmit={loginSys}>
+            <form onSubmit={handleLogin}>
               <input 
                 value={ login }
                 onChange={ e => setLogin(e.target.value) }
