@@ -63,6 +63,12 @@ export const SectionOne = styled.div`
             }
             form{
                 padding: 12px;
+
+                .hasError{
+                    border-bottom: 2px solid red;
+                    background: #fed1d1;
+                    }
+
                 input{
                     display: initial;
                     border: none;
@@ -102,6 +108,15 @@ export const SectionOne = styled.div`
                 margin: 20px 0;
                 &:hover{
                     background: #68DE5A;
+                }
+                &:disabled{
+                    border: 3px solid #666;
+                    color: #666;
+                    cursor: disabled;
+
+                    &:hover{
+                    background: #FFF;
+                }
                 }
             }
         }

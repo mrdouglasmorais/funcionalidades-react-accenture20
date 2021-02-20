@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
     background-color: #8C52E5;
@@ -23,7 +23,7 @@ export const LoginPage = styled.div`
         align-items: center;
         justify-content: center;
         background: #fff;
-        max-width: 600px;
+        /* max-width: 600px; */
         min-width: 450px;
         border-radius: 10px;
         padding: 30px;

@@ -8,4 +8,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+.ErrorText{
+    color: red;
+    text-align: center;
+    font-size: 12px;
+}
 `
