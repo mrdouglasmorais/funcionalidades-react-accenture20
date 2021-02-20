@@ -42,61 +42,61 @@ const InnerForm = (props: OtherProps & FormikProps<FormValueSignUp>) => {
                     </div>
                     <form onSubmit={handleSubmit}>
 
-                            <InputMask 
-                                mask="999.999.999-99"
-                                width={50}
-                                type="text"
-                                name="cpf"
-                                className={ errors.cpf ? 'hasError' : ''}
-                                placeholder={errors.username ? "***Este campo é obrigatório" : "Informe seu CPF"}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.cpf}
-                            />
+                        <InputMask 
+                            mask="999.999.999-99"
+                            width={50}
+                            type="text"
+                            name="cpf"
+                            className={ errors.cpf ? 'hasError' : ''}
+                            placeholder={errors.username ? "Informe seu CPF" : "Informe seu CPF"}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.cpf}
+                        />
 
-                            <input
-                                width={50}
-                                type="text"
-                                name="name"
-                                className={ errors.name ? 'hasError' : ''}
-                                placeholder={errors.username ? "***Este campo é obrigatório" : "Informe seu nome completo"}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.name}
-                            />
+                        <input
+                            width={50}
+                            type="text"
+                            name="name"
+                            className={ errors.name ? 'hasError' : ''}
+                            placeholder={errors.username ? "Informe seu nome completo" : "Informe seu nome completo"}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.name}
+                        />
 
-                            <input
-                                width={50}
-                                type="text"
-                                name="username"
-                                className={ errors.username ? 'hasError' : ''}
-                                placeholder={errors.username ? "***Este campo é obrigatório" : "Escolha um nome de usuário"}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.username}
-                            />
+                        <input
+                            width={50}
+                            type="text"
+                            name="username"
+                            className={ errors.username ? 'hasError' : ''}
+                            placeholder={errors.username ? "Escolha um nome de usuário" : "Escolha um nome de usuário"}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.username}
+                        />
 
-                            <input
-                                width={50}
-                                type="password"
-                                name="password"
-                                className={ errors.password ? 'hasError' : ''}
-                                placeholder={errors.username ? "***Este campo é obrigatório" : "Escolha uma senha"}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}
-                            />
+                        <input
+                            width={50}
+                            type="password"
+                            name="password"
+                            className={ errors.password ? 'hasError' : ''}
+                            placeholder={errors.username ? "Escolha uma senha" : "Escolha uma senha"}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.password}
+                        />
 
-                            <input
-                                width={50}
-                                type="password"
-                                name="repassword"
-                                className={ errors.repassword ? 'hasError' : ''}
-                                placeholder={errors.username ? "***Este campo é obrigatório" : "Confirme sua senha"}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.repassword}
-                            />
+                        <input
+                            width={50}
+                            type="password"
+                            name="repassword"
+                            className={ errors.repassword ? 'hasError' : ''}
+                            placeholder={errors.username ? "Confirme sua senha" : "Confirme sua senha"}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.repassword}
+                        />
 
                         <button
                             type="submit"
@@ -104,9 +104,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValueSignUp>) => {
                                 isSubmitting ||
                                 !!(errors.cpf && touched.cpf) ||
                                 !!(errors.name && touched.name) ||
-                                !!(errors.username && touched.username) ||
-                                !!(errors.password && touched.password) ||
-                                !!(errors.repassword && touched.repassword)
+                                !!(errors.username && touched.username)
                             }
                         >
                             Continuar
@@ -117,6 +115,8 @@ const InnerForm = (props: OtherProps & FormikProps<FormValueSignUp>) => {
         </SectionOne>
     );
 };
+
+
 
 
 const App = withFormik<MyFormPropsSignUp, FormValueSignUp>({
@@ -141,31 +141,35 @@ const App = withFormik<MyFormPropsSignUp, FormValueSignUp>({
         { cpf, name, username, password, repassword }: FormValueSignUp,
         { props, setSubmitting, setErrors }
     ) {
-        const postData = {
-            cpf: cpf.replace(/[^\d]/g, ""),
-            nome: name,
-            login: username,
-            senha: password
-          }
+        console.log(cpf, name, username, password, repassword )
+        // const history = useHistory();
+
+        // const postData = {
+        //     cpf: cpf.replace(/[^\d]/g, ""),
+        //     nome: name,
+        //     login: username,
+        //     senha: password
+        //   }
           
-          if ( password !== repassword ) {
-            toast.error('Sua senha está incorreta!') 
-            return;
-          }
+        //   if ( password !== repassword ) {
+        //     toast.error('Sua senha está incorreta!') 
+        //     return;
+        //   }
       
-          try {
-            api.post(`usuarios`, postData ).then(
-              response => { 
-                if (response.status === 200){
-                  useHistory().push('/login')
-                } else {
-                  toast.error('Algo de errado, tente novamente em alguns minutos.')
-                }
-               }
-            )
-          } catch (err) {
-            toast.error('Confirm seus dados')
-          }
+        //   try {
+        //     api.post(`usuarios`, postData ).then(
+        //       response => { 
+        //         if (response.status === 200){
+        //             // history.push('/login')
+        //         } else {
+        //             toast.error('Algo deu errado')
+        //         } 
+                
+        //        }
+        //     )
+        //   } catch (err) {
+        //     toast.error('Confirm seus dados')
+        //   }
     }
 })(InnerForm);
 
